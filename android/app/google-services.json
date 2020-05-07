@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "329431487866",
+    "firebase_url": "https://send-note-app.firebaseio.com",
+    "project_id": "send-note-app",
+    "storage_bucket": "send-note-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329431487866:android:0f3e8e8df81afb52f4b2c3",
+        "android_client_info": {
+          "package_name": "com.jarjut.send_note"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329431487866-767avf3ht31grlqodn6hmk3d3ivgo5id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyQesiFYnNZJplmuVCK2wSUXYdqhVLd_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329431487866-767avf3ht31grlqodn6hmk3d3ivgo5id.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

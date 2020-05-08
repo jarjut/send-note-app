@@ -26,7 +26,7 @@ class SplashPage extends StatelessWidget {
           },
           child: Center(
             child: SizedBox(
-              height: 75.0,
+              height: 100.0,
               child: Image.asset('assets/images/icon.png'),
             ),
           ),

@@ -24,4 +24,13 @@ class NoteRepository {
     });
     return print('Edit Note Success');
   }
+
+  Future<void> sendNote({String title, String notes, String uid}) async {
+    return await noteCollection.document().setData({
+      'uid': uid,
+      'title': title,
+      'notes': notes,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+  }
 }

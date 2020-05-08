@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:send_note_app/drawer.dart';
 import 'package:send_note_app/features/common/loading_dialog.dart';
 import 'package:send_note_app/models/note.dart';
 import 'package:send_note_app/repositories/note_repository.dart';
+import 'package:send_note_app/router_const.dart';
 import 'package:send_note_app/style.dart';
 
 class EditNotePage extends StatefulWidget {
@@ -39,9 +39,12 @@ class _EditNotePageState extends State<EditNotePage> {
       backgroundColor: BackgroundColor,
       appBar: AppBar(
         title: const Text('Edit Note'),
-      ),
-      drawer: Drawer(
-        child: AppDrawer(),
+        leading: GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -73,10 +76,26 @@ class _EditNotePageState extends State<EditNotePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _saveNote,
-        backgroundColor: PrimaryColor,
-        child: Icon(Icons.save),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            heroTag: 'btnSend',
+            onPressed: () {
+              Navigator.pushNamed(context, SendNoteRoute, arguments: _note);
+            },
+            backgroundColor: PrimaryColor,
+            child: Icon(Icons.send),
+          ),
+          const SizedBox(height: 30),
+          FloatingActionButton(
+            heroTag: 'btnSave',
+            onPressed: _saveNote,
+            backgroundColor: PrimaryColor,
+            child: Icon(Icons.save),
+          ),
+        ],
       ),
     );
   }

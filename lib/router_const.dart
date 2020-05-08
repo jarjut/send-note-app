@@ -4,3 +4,6 @@ const String RegisterRoute = '/register';
 const String NotesRoute = '/notes';
 const String AddNoteRoute = '/note/add';
 const String EditNoteRoute = '/note/edit';
+const String SendNoteRoute = '/note/send';
+const String FriendsRoute = '/friends';
+const String AddFriendsRoute = '/friends/add';

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:send_note_app/models/note.dart';
 import 'package:send_note_app/models/user.dart';
 import 'package:send_note_app/repositories/user_repository.dart';
@@ -42,17 +41,17 @@ class _NotesPageState extends State<NotesPage> {
         backgroundColor: BackgroundColor,
         appBar: AppBar(
           title: const Text('Notes'),
-          actions: <Widget>[
-            Container(
-              child: FlatButton(
-                onPressed: _addButtonPressed,
-                child: Icon(
-                  FontAwesomeIcons.plusCircle,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
+          // actions: <Widget>[
+          //   Container(
+          //     child: FlatButton(
+          //       onPressed: _addButtonPressed,
+          //       child: Icon(
+          //         FontAwesomeIcons.plusCircle,
+          //         color: Colors.white,
+          //       ),
+          //     ),
+          //   ),
+          // ],
         ),
         drawer: Drawer(
           child: AppDrawer(),
@@ -75,46 +74,7 @@ class _NotesPageState extends State<NotesPage> {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final Note _note = Note.fromSnapshot(list[index]);
-                  return Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 5.0),
-                    height: 90.0,
-                    child: Material(
-                      elevation: 3.0,
-                      borderRadius: BorderRadius.circular(8.0),
-                      color: Colors.yellow.shade100,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, EditNoteRoute,
-                              arguments: _note);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  _note.title,
-                                  style: const TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              const SizedBox(height: 5.0),
-                              Container(
-                                child: Text(
-                                  _note.notes,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
+                  return buildListNote(_note);
                 },
                 itemCount: list.length,
               );
@@ -125,6 +85,46 @@ class _NotesPageState extends State<NotesPage> {
           backgroundColor: PrimaryColor,
           onPressed: _addButtonPressed,
           child: Icon(Icons.add),
+        ),
+      ),
+    );
+  }
+
+  Widget buildListNote(Note note) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      height: 90.0,
+      child: Material(
+        elevation: 3.0,
+        borderRadius: BorderRadius.circular(8.0),
+        color: Colors.yellow.shade100,
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, EditNoteRoute, arguments: note);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    note.title,
+                    style: const TextStyle(
+                        fontSize: 20.0, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Container(
+                  child: Text(
+                    note.notes,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

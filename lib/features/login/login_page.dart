@@ -56,12 +56,29 @@ class _LoginPageState extends State<LoginPage> {
                 LoadingDialog.hide(context);
               }
             },
-            child: SingleChildScrollView(
+            child: Center(
               child: Container(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 35.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        height: 100.0,
+                        child: Image.asset('assets/images/icon.png'),
+                      ),
+                      const SizedBox(height: 30),
+                      const Text(
+                        'LOGIN',
+                        style: TextStyle(
+                            fontSize: 35.0,
+                            fontWeight: FontWeight.w500,
+                            color: PrimaryColor),
+                      ),
                       TextFormField(
                         controller: _emailController,
                         decoration: const InputDecoration(labelText: 'Email'),
@@ -73,28 +90,44 @@ class _LoginPageState extends State<LoginPage> {
                             const InputDecoration(labelText: 'Password'),
                       ),
                       const SizedBox(
-                        height: 15.0,
+                        height: 35.0,
                       ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        child: const Text('Login'),
-                        color: Colors.blue,
-                        onPressed: _loginSubmit,
-                      ),
-                      const SizedBox(
-                        height: 15.0,
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        child: const Text('Register'),
-                        color: Colors.blue,
-                        onPressed: () {
-                          Navigator.pushNamed(context, RegisterRoute);
-                        },
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 50.0,
+                            width: 150.0,
+                            child: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Text(
+                                'Login',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: PrimaryColor,
+                              onPressed: _loginSubmit,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50.0,
+                            width: 150.0,
+                            child: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Text(
+                                'Register',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: PrimaryColor,
+                              onPressed: () {
+                                Navigator.pushNamed(context, RegisterRoute);
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

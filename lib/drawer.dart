@@ -26,9 +26,16 @@ class AppDrawer extends StatelessWidget {
         ),
         ListTile(
           leading: Icon(FontAwesomeIcons.stickyNote),
-          title: const Text('My Notes'),
+          title: const Text('Notes'),
           onTap: () {
             Navigator.popAndPushNamed(context, NotesRoute);
+          },
+        ),
+        ListTile(
+          leading: Icon(FontAwesomeIcons.userFriends),
+          title: const Text('Friends'),
+          onTap: () {
+            Navigator.popAndPushNamed(context, FriendsRoute);
           },
         ),
         ListTile(

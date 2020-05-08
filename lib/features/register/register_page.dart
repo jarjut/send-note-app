@@ -55,45 +55,84 @@ class _RegisterPageState extends State<RegisterPage> {
               LoadingDialog.hide(context);
             }
           },
-          child: SingleChildScrollView(
+          child: Center(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 35),
-              child: Column(
-                children: <Widget>[
-                  Form(
-                    key: _formKey,
-                    child: Column(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 35.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.center,
+                      height: 100.0,
+                      child: Image.asset('assets/images/icon.png'),
+                    ),
+                    const SizedBox(height: 30),
+                    const Text(
+                      'REGISTER',
+                      style: TextStyle(
+                          fontSize: 35.0,
+                          fontWeight: FontWeight.w500,
+                          color: PrimaryColor),
+                    ),
+                    TextFormField(
+                      controller: _fullNameController,
+                      decoration: const InputDecoration(labelText: 'Full Name'),
+                    ),
+                    TextFormField(
+                      controller: _emailController,
+                      decoration: const InputDecoration(labelText: 'Email'),
+                    ),
+                    TextFormField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(labelText: 'Password'),
+                    ),
+                    const SizedBox(
+                      height: 35.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        TextFormField(
-                          controller: _fullNameController,
-                          decoration:
-                              const InputDecoration(labelText: 'Full Name'),
-                        ),
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: const InputDecoration(labelText: 'Email'),
-                        ),
-                        TextFormField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration:
-                              const InputDecoration(labelText: 'Password'),
-                        ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        FlatButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(35),
+                        SizedBox(
+                          height: 50.0,
+                          width: 150.0,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Text(
+                              'Register',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            color: PrimaryColor,
+                            onPressed: _registerSubmit,
                           ),
-                          child: const Text('Register'),
-                          color: Colors.blue,
-                          onPressed: _registerSubmit,
+                        ),
+                        SizedBox(
+                          height: 50.0,
+                          width: 150.0,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            color: PrimaryColor,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

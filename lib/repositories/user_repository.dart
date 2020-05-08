@@ -41,8 +41,12 @@ class UserRepository {
     final FirebaseUser user = result.user;
 
     await userCollection.document(user.uid).setData({
+      'uid': user.uid,
       'fullName': fullName,
+      'friends': ['friend'],
     });
+
+    await persistUser(uid: user.uid, email: user.email, fullName: fullName);
   }
 
   Future<void> signOut() async {
@@ -74,5 +78,36 @@ class UserRepository {
     print(json.encode(user));
 
     prefs.setString('user', json.encode(user));
+  }
+
+  Future addFriend(String uid) async {
+    final User currentUser = await getUser();
+    List friends;
+    await userCollection
+        .document(currentUser.uid)
+        .get()
+        .then((ds) => friends = ds['friends'])
+        .catchError((e) => print(e.toString()));
+
+    friends.add(uid);
+
+    userCollection.document(currentUser.uid).updateData({
+      'fullName': currentUser.fullName,
+      'friends': friends,
+    });
+  }
+
+  Future getFriend() async {
+    final User currentUser = await getUser();
+    List friends = [];
+    await userCollection
+        .document(currentUser.uid)
+        .get()
+        .then((ds) => friends = ds['friends'])
+        .catchError((e) => print(e.toString()));
+
+    print(friends);
+
+    return friends;
   }
 }

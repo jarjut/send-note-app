@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:send_note_app/drawer.dart';
 import 'package:send_note_app/features/common/loading_dialog.dart';
 import 'package:send_note_app/repositories/note_repository.dart';
 import 'package:send_note_app/style.dart';
@@ -33,9 +32,12 @@ class _AddNotePageState extends State<AddNotePage> {
       backgroundColor: BackgroundColor,
       appBar: AppBar(
         title: const Text('Add Note'),
-      ),
-      drawer: Drawer(
-        child: AppDrawer(),
+        leading: GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),

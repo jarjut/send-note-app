@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:send_note_app/features/login/login_page.dart';
-import 'package:send_note_app/features/notes/edit_note_page.dart';
-import 'package:send_note_app/features/notes/notes_page.dart';
-import 'package:send_note_app/features/register/register_page.dart';
-import 'package:send_note_app/router_const.dart';
-import 'package:send_note_app/splash_screen.dart';
-import 'package:send_note_app/style.dart';
 
 import 'authentication/authentication_bloc.dart';
 import 'authentication/authentication_event.dart';
+import 'features/friends/add_friends_page.dart';
+import 'features/friends/friends_page.dart';
+import 'features/login/login_page.dart';
 import 'features/notes/add_note_page.dart';
+import 'features/notes/edit_note_page.dart';
+import 'features/notes/notes_page.dart';
+import 'features/notes/send_note.page.dart';
+import 'features/register/register_page.dart';
 import 'repositories/user_repository.dart';
+import 'router_const.dart';
+import 'splash_screen.dart';
+import 'style.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +46,9 @@ class App extends StatelessWidget {
         NotesRoute: (context) => const NotesPage(),
         AddNoteRoute: (context) => const AddNotePage(),
         EditNoteRoute: (context) => const EditNotePage(),
+        SendNoteRoute: (context) => const SendNotePage(),
+        FriendsRoute: (context) => const FriendsPage(),
+        AddFriendsRoute: (context) => const AddFriendsPage(),
       },
     );
   }
